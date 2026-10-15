@@ -1,0 +1,240 @@
+/* ===== RESET & BASE ===== */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --green: #5b6b45;
+  --green-dark: #4a5838;
+  --bg-soft: #f3f4f3;
+  --border: #e2e4e1;
+  --text: #222;
+  --muted: #666;
+}
+
+body {
+  font-family: "Segoe UI", Arial, sans-serif;
+  color: var(--text);
+  background: #fff;
+  line-height: 1.5;
+}
+
+ul { list-style: none; }
+a { color: inherit; text-decoration: none; }
+img { display: block; max-width: 100%; }
+
+.container {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Ẩn nhưng vẫn đọc được bởi screen reader (accessibility) */
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* ===== BUTTONS (dùng chung) ===== */
+.btn {
+  display: inline-block;
+  padding: 8px 18px;
+  border: none;
+  border-radius: 3px;
+  font-size: 13px;
+  cursor: pointer;
+}
+.btn-primary { background: var(--green); color: #fff; }
+.btn-primary:hover { background: var(--green-dark); }
+
+/* ===== HEADER ===== */
+.site-header { background: #fff; padding: 14px 0; }
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+.logo { display: flex; align-items: center; gap: 8px; font-size: 20px; font-weight: 600; }
+
+.search-form {
+  display: flex;
+  flex: 1;
+  max-width: 400px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.search-form input[type="search"] {
+  flex: 1;
+  padding: 8px 12px;
+  border: none;
+  outline: none;
+  font-size: 13px;
+}
+.search-form button {
+  width: 40px;
+  border: none;
+  background: #2b3340;
+  color: #fff;
+  cursor: pointer;
+}
+
+.header-actions { display: flex; gap: 24px; font-size: 13px; }
+
+/* ===== NAVIGATION ===== */
+/* Menu cố định khi cuộn trang (position: sticky) */
+#main-nav {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--bg-soft);
+}
+#main-nav ul { display: flex; gap: 32px; }
+#main-nav ul li a {
+  display: block;
+  padding: 10px 4px;
+  font-size: 12px;
+  border-bottom: 2px solid transparent;
+}
+#main-nav ul li a:hover,
+#main-nav ul li a.active { border-bottom-color: var(--green); }
+
+/* ===== HERO ===== */
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 16px 0;
+  padding: 30px 40px;
+  background: linear-gradient(90deg, #f1efeb 0%, #e9e5de 100%);
+  border-radius: 4px;
+  min-height: 260px;
+}
+.hero-text { max-width: 320px; }
+.hero .eyebrow { font-size: 11px; color: var(--green); letter-spacing: 1px; }
+.hero h1 { font-size: 30px; line-height: 1.2; margin: 8px 0; }
+.hero p { font-size: 13px; color: var(--muted); margin-bottom: 18px; }
+.hero img { width: 52%; }
+
+/* ===== CATEGORIES ===== */
+.categories {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 14px;
+  margin-bottom: 28px;
+}
+.categories figure {
+  background: var(--bg-soft);
+  padding: 16px 10px 10px;
+  text-align: center;
+  border-radius: 3px;
+}
+.categories img { height: 60px; margin: 0 auto 10px; transition: opacity .2s; }
+.categories figure:hover img { opacity: 0.6; }   /* độ mờ khi rê chuột */
+.categories figcaption { font-size: 12px; }
+
+/* ===== FEATURED PRODUCTS ===== */
+.section-head { margin-bottom: 14px; overflow: hidden; }   /* overflow: xóa float */
+.section-head h2 { float: left; font-size: 16px; }
+.section-head .view-all { float: right; font-size: 12px; color: var(--muted); }
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 14px;
+}
+.product-card {
+  padding: 10px;
+  border: 1px solid var(--border);
+  border-radius: 3px;
+}
+.product-card figure {
+  background: var(--bg-soft);
+  padding: 14px;
+  margin-bottom: 10px;
+}
+.product-card img { height: 80px; margin: 0 auto; transition: opacity .2s; }
+.product-card:hover img { opacity: 0.7; }
+.product-card h3 { font-size: 12px; font-weight: 500; }
+.product-card .price { font-size: 12px; font-weight: 600; margin: 4px 0 8px; }
+.product-card .btn { width: 100%; }
+
+/* ===== SERVICES ===== */
+.services {
+  margin: 24px 0 30px;
+  background: var(--bg-soft);
+  border-radius: 3px;
+}
+.services dl { display: flex; }
+.service {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  padding: 18px;
+}
+.service + .service { border-left: 1px solid #ccc; }
+.service-icon { font-size: 28px; }
+.service dt { font-size: 13px; font-weight: 600; }
+.service dd { font-size: 11px; color: var(--muted); }
+
+/* ===== FOOTER ===== */
+.site-footer { background: var(--bg-soft); padding-top: 24px; font-size: 12px; }
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 1fr 1.6fr;
+  gap: 24px;
+}
+.site-footer h3 { font-size: 15px; margin-bottom: 4px; }
+.site-footer h4 { font-size: 12px; margin-bottom: 8px; }
+.site-footer li { margin-bottom: 4px; color: var(--muted); }
+.site-footer a:hover { color: var(--green); }
+
+.social { display: flex; gap: 12px; margin-top: 12px; }
+.social a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px; height: 20px;
+  border-radius: 50%;
+  background: #2b3340;
+  color: #fff;
+  font-size: 10px;
+}
+
+.newsletter p { color: var(--muted); margin-bottom: 8px; }
+.newsletter form { display: flex; }
+.newsletter input[type="email"] {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid var(--border);
+  border-right: none;
+  font-size: 12px;
+}
+
+.footer-bottom {
+  margin-top: 20px;
+  padding-top: 12px;
+  padding-bottom: 14px;
+  color: var(--muted);
+  overflow: hidden;      /* xóa float */
+}
+.footer-bottom small { float: left; }
+.footer-bottom ul { float: right; display: flex; gap: 12px; }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 800px) {
+  .header-inner { flex-wrap: wrap; }
+  #main-nav ul { overflow-x: auto; gap: 18px; }
+  .hero { flex-direction: column; text-align: center; padding: 20px; }
+  .hero img { width: 100%; }
+  .categories,
+  .product-grid { grid-template-columns: repeat(2, 1fr); }
+  .services dl { flex-direction: column; }
+  .service + .service { border-left: none; border-top: 1px solid #ccc; }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+}
